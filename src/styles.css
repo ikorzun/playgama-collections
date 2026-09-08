@@ -234,6 +234,8 @@ body:has(dialog[open]) { overflow: hidden; }
   .ranking-cover { grid-area: cover; width: 64px; height: 64px; border-radius: 26px; }
   .rank { grid-area: rank; }
   .ranking-text { grid-area: text; align-self: center; }
+  /* The 390 frame gives every rank the same badge; gold is a 1200-only marker. */
+  .rank.first { background: none; color: rgba(255, 255, 255, .8); }
   .ranking-category { display: block; margin-top: 4px; }
   .introduction, .collection-description { max-width: none; }
   .collection-description { text-align: left; font-size: 14px; line-height: 16.8px; }
