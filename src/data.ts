@@ -1,6 +1,28 @@
-import assets from './assets.json';
-import categoryIcons from './category-icons.json';
-import catalogue from './games.json';
+import rawAssets from './assets.json';
+import rawCategoryIcons from './category-icons.json';
+import rawCatalogue from './games.json';
+
+/**
+ * Pages serves the build from a sub-path, so every asset URL that lives in data
+ * rather than in an import needs that base in front of it. Vite rewrites the URLs
+ * it processes itself; these it never sees.
+ */
+function withBase<T>(value: T): T {
+  if (typeof value === 'string') {
+    return (value.startsWith('/') ? import.meta.env.BASE_URL + value.slice(1) : value) as T;
+  }
+  if (Array.isArray(value)) return value.map(withBase) as T;
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(
+      Object.entries(value as Record<string, unknown>).map(([key, item]) => [key, withBase(item)]),
+    ) as T;
+  }
+  return value;
+}
+
+export const assets = withBase(rawAssets);
+const categoryIcons = withBase(rawCategoryIcons);
+const catalogue = withBase(rawCatalogue);
 
 export const mobileAssets = assets['reference-0'];
 export const GAME_URL = 'https://playgama.com/game/melon-sandbox';

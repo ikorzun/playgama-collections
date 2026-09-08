@@ -1,8 +1,7 @@
 import { Fragment, useEffect, useRef, useState, type CSSProperties } from 'react';
 import { SQUIRCLE_PATH } from './squircle';
-import assets from './assets.json';
 import {
-  APP_URL, aboutDescription, categories, categoryUrl, companyLinks, footerCategories,
+  APP_URL, aboutDescription, assets, categories, categoryUrl, companyLinks, footerCategories,
   games, languages, mobileAssets, sidebarLinks, socialLinks, type Game,
 } from './data';
 

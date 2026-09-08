@@ -1,6 +1,5 @@
-import assets from './assets.json';
 import { Categories, Footer, GameCard, GameRanking, Header, Sidebar, SquircleClip } from './components';
-import { collectionDescription, featuredGames, introduction, mobileAssets } from './data';
+import { assets, collectionDescription, featuredGames, introduction, mobileAssets } from './data';
 
 /** One responsive collection page implementing the two supplied Figma frames. */
 export function App() {
