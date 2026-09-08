@@ -1,5 +1,7 @@
 # Playgama Collections
 
+**Live: https://ikorzun.github.io/playgama-collections/**
+
 A responsive React + TypeScript implementation of the two supplied Playgama Figma frames, styled with plain CSS.
 
 ## Run
@@ -81,3 +83,13 @@ npm run test:e2e
 The checks cover widths of 320, 390, 768, 1200, and 1600 px; ranking column order; the three cards; horizontal overflow; image loading; search and empty states; focus restoration; and link destinations. Full-page screenshots are written to `test-results/` for the two Figma widths.
 
 An existing Chromium installation can be used by setting `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to its executable path.
+
+## Deployment
+
+Pushing to `main` builds the site and publishes it to GitHub Pages via `.github/workflows/pages.yml`.
+
+Pages serves a project repo from a sub-path, so the build sets `base` to `/playgama-collections/`.
+Vite rewrites the asset URLs it processes itself, but the ones that live in `assets.json`,
+`category-icons.json`, and `games.json` are plain strings it never sees — `withBase` in `src/data.ts`
+prefixes those at runtime. `npm run preview` uses the same base as the build, so it matches what Pages
+serves; the dev server and the browser checks stay at the root.
