@@ -34,9 +34,9 @@ for (const width of [320, 390, 768, 1200, 1600]) {
     }).length);
     expect(overflowing).toBe(0);
     // Every card credits its developer and shows the catalogue rating.
-    await expect(page.locator('.fact-developer dd a')).toHaveCount(20);
+    await expect(page.locator('.game-meta a')).toHaveCount(20);
     await expect(page.locator('.game-rating')).toHaveCount(20);
-    const firstDeveloper = page.locator('#game-1 .fact-developer dd a');
+    const firstDeveloper = page.locator('#game-1 .game-meta a');
     await expect(firstDeveloper).toHaveText('DUCKY LTD');
     await expect(firstDeveloper).toHaveAttribute('href', 'https://playgama.com/search?query=DUCKY%20LTD');
     expect(await page.locator('#game-1 .stars').evaluate(

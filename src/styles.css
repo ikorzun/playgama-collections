@@ -121,25 +121,23 @@ h1 { font-size: 48px; line-height: 1; font-weight: 590; text-align: center; lett
 /* system/like-24 is a 24 px frame around a 20 px glyph; this renders the glyph. */
 .like-icon { width: 20px; height: 20px; }
 /* Stars fill proportionally: a gold copy clipped over the dim row beneath it. */
-.game-rating { display: flex; align-items: center; gap: 8px; font-size: 14px; line-height: 1.2; }
-.stars { position: relative; color: #ffffff2e; letter-spacing: 2px; }
+.game-rating { display: flex; align-items: center; gap: 4px; }
+.stars { position: relative; color: #ffffff2e; font-size: 15px; line-height: 14px; letter-spacing: 2.2px; }
 .stars::before { content: '\2605\2605\2605\2605\2605'; position: absolute; inset: 0; width: var(--filled); overflow: hidden; color: var(--gold); white-space: nowrap; }
 .game-rating strong { font-weight: 510; }
-.rating-count { color: var(--muted); }
+.votes { color: #ffffff99; }
 .game-heading-text { flex: 1; min-width: 0; }
 .game-heading h2, .game-heading p { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .game-heading h2 { font-size: 21px; font-weight: 510; line-height: 1.1; }
 .game-heading p { margin-top: 4px; }
 .play-button { display: flex; align-items: center; justify-content: center; height: 56px; border-radius: 100px; background: var(--purple); font-size: 18px; font-weight: 510; flex: none; }
 .game-details { display: flex; flex-direction: column; gap: 16px; }
-/* 1200 runs the platforms and the date together and drops the labels. */
-.game-facts { font-size: 14px; line-height: 1.2; }
-.game-facts dt { display: none; }
-.game-facts > div, .game-facts dd { display: inline; }
-.game-facts dd { color: #fff; }
-.fact-platform::after { content: ' / '; }
-.game-facts > .fact-series { display: block; margin-top: 6px; }
-.game-facts dd a { color: var(--purple-light); }
+/* 9108:45841 — rating, then platforms / date / developer, then the series. No labels. */
+.game-facts { display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.2; }
+.game-meta { color: #fff; }
+.sep { color: #ffffff66; }
+.game-meta a { color: inherit; }
+.game-series a { color: var(--purple-light); }
 .game-tags { display: flex; flex-wrap: wrap; gap: 4px; }
 .game-tags a { display: inline-flex; align-items: center; gap: 3px; height: 24px; padding: 0 12px; border-radius: 100px; background: var(--carbon-400); font-size: 12px; line-height: 1; font-weight: 510; color: var(--purple-light); }
 .game-tags a > span { color: #ffffff66; }
@@ -257,11 +255,6 @@ body:has(dialog[open]) { overflow: hidden; }
   .game-heading, .play-button, .game-details { margin-inline: 0; }
   .game-position.on-cover, .game-position.inline-badge { display: none; }
   .game-heading p { margin-top: 6px; }
-  .game-facts { display: flex; flex-direction: column; gap: 6px; line-height: 1.2; }
-  .game-facts dt { display: inline; margin-right: 4px; color: #ffffff99; }
-  .game-facts > div { display: block; }
-  .fact-platform::after { content: none; }
-  .game-facts > .fact-series { margin-top: 0; }
   .game-tags { gap: 6px; }
   .game-tags a { height: 24px; padding-inline: 12px; }
   .game-description { line-height: 16.8px; }

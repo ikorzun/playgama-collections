@@ -30,7 +30,7 @@ Both frames are the same collection page, so one responsive page implements them
 | Ranking | two columns, ranks 1–10 and 11–20 running down each; 72 px covers, badge above the title | one column, 64 px covers, 28 px badge to the left, category under the title |
 | Game card | cover first with the rank overlaid on it, then the 56 px icon beside the title | the rank sits on the icon's corner, then the cover |
 | Likes pill | closes the heading row, filling its height: `#1d1d21`, 16 px | fixed 48 px, `rgba(255,255,255,.08)`, 14 px |
-| Card facts | `PC, Android, iOS / September 2026` on one line, series below | `Platform:` / `Last Update:` / `Series:` on labelled rows |
+| Card facts | identical on both: rating, then `platforms / date / developer`, then the series — no labels |  |
 
 Cover art is masked with a **superellipse**, the shape Playgama uses throughout — `|2x-1|^5 + |2y-1|^5 = 1`, the same curve as the frames' `Superellipse (n=5)` layers. `src/squircle.ts` samples it into an SVG clip path in `objectBoundingBox` units, so one path stretches to any cover box; `border-radius` cannot draw this shape. Square catalogue icons are a different shape — a smoothed rounded corner, not a full superellipse — so they keep a radius and add `corner-shape: squircle` where the browser supports it.
 
@@ -62,10 +62,11 @@ badge white on black — that one does apply to first place too.
 
 Page content comes from the Playgama catalogue in `src/games.json` — 20 real games retrieved on 8 September 2026, with their titles, categories, platforms, update dates, related series, tag counts, and descriptions. Their artwork is committed under `public/games`, so rendering does not depend on expiring URLs.
 
-Each card credits its developer and shows the catalogue's rating. Playgama has no developer pages — the
-game page prints the name as plain text — so the credit links to a Playgama search for that developer,
-which does return their games. The stars are `ratingValue` out of 5 and the count beside them is
-`ratingCount`, the same number the likes pill abbreviates.
+Card facts follow `9108:45841`: a rating row, then `platforms / date / developer` with the separators
+dimmed, then the series — no field labels on either width. The stars fill proportionally to
+`ratingValue`, and the votes beside them are `ratingCount`, the same number the likes pill abbreviates.
+Playgama has no developer pages — the game page prints the name as plain text — so the credit links to a
+Playgama search for that developer, which does return their games.
 
 All 20 games appear both in the ranking and as full cards below it. Each has a 256 px square icon and a 1200 px wide 16:9 cover in `public/games`, downscaled from the catalogue originals and saved as JPEG — the sources are 1920×1080 PNGs and would otherwise weigh 55 MB. Each also has its preview clip in `public/games/video` (14 MB for the twenty). The `sourceImage`, `sourceCover`, and `sourceVideo` fields in `games.json` keep the original URLs, so the media can be re-fetched. To swap in a different collection, replace `src/games.json` and the matching files in `public/games`.
 
