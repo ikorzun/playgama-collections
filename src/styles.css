@@ -99,7 +99,7 @@ h1 { font-size: 48px; line-height: 1; font-weight: 590; text-align: center; lett
 .ranking-category { display: none; }
 .collection-description { align-self: center; max-width: 600px; color: var(--muted); font-size: 14px; line-height: 17px; text-align: center; }
 .featured-games { display: flex; flex-direction: column; gap: 16px; align-self: center; width: 600px; max-width: 100%; }
-.game-card { display: flex; flex-direction: column; gap: 16px; padding-block: 16px; min-width: 0; scroll-margin-top: 24px; }
+.game-card { display: flex; flex-direction: column; gap: 16px; padding: 32px 0 16px; min-width: 0; scroll-margin-top: 24px; }
 /* The 1200 frame leads with the cover; the 390 frame lifts the heading above it. */
 .card-cover { order: 1; position: relative; }
 .game-heading { order: 2; display: flex; align-items: center; gap: 10px; }
@@ -250,7 +250,7 @@ body:has(dialog[open]) { overflow: hidden; }
   .game-card { gap: 16px; padding: 16px 0; }
   /* 390 puts the heading above the cover: icon, title, then the rank at the end. */
   .game-heading { order: 0; gap: 10px; }
-  .game-likes { align-self: center; height: 48px; padding: 0 10px 0 8px; background: #ffffff14; font-size: 14px; }
+  .game-likes { align-self: center; height: 48px; padding: 0 12px; background: #ffffff14; font-size: 14px; }
   .icon-rank { display: grid; }
   .game-heading, .play-button, .game-details { margin-inline: 0; }
   .game-position.on-cover, .game-position.inline-badge { display: none; }
