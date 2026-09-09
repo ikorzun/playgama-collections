@@ -154,6 +154,12 @@ export function GameCard({ game }: { game: Game & { cover: string } }) {
     </div>
     <a className="play-button" href={game.href}>Play now<span className="sr-only"> — {game.title}</span></a>
     <div className="game-details">
+      <p className="game-rating">
+        <span className="stars" style={{ '--filled': (game.rating / 5) * 100 + '%' } as CSSProperties} aria-hidden="true">★★★★★</span>
+        <strong>{game.rating.toFixed(1)}</strong>
+        <span className="rating-count">{formatCount(game.ratingCount)} ratings</span>
+        <span className="sr-only">{game.rating.toFixed(1)} out of 5</span>
+      </p>
       <dl className="game-facts">
         <div className="fact-platform"><dt>Platform:</dt><dd>{game.platforms}</dd></div>
         <div className="fact-update"><dt>Last Update:</dt><dd>{game.updatedAt}</dd></div>
@@ -161,12 +167,6 @@ export function GameCard({ game }: { game: Game & { cover: string } }) {
           <Fragment key={link.href}>{index > 0 && ', '}<a href={link.href}>{link.label}</a></Fragment>)}</dd></div>
         <div className="fact-developer"><dt>Developer:</dt><dd><a href={game.developerUrl}>{game.developer}</a></dd></div>
       </dl>
-      <p className="game-rating">
-        <span className="stars" style={{ '--filled': (game.rating / 5) * 100 + '%' } as CSSProperties} aria-hidden="true">★★★★★</span>
-        <strong>{game.rating.toFixed(1)}</strong>
-        <span className="rating-count">{formatCount(game.ratingCount)} ratings</span>
-        <span className="sr-only">{game.rating.toFixed(1)} out of 5</span>
-      </p>
       <ul className="game-tags" aria-label="Game tags">{game.tags.map(tag =>
         <li key={tag.href}><a href={tag.href}>{tag.label} <span>{tag.count}</span></a></li>)}</ul>
       <p className="game-description">{game.description}</p>
