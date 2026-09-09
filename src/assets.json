@@ -76,7 +76,8 @@
     "imgCover11": "/assets/40bb8685-2d04-46f8-8b81-1f0a24f1ac30.png"
   },
   "card": {
-    "imgSuperellipseN5": "/assets/6a15d782-90e3-4f59-92c5-db719599877b.png"
+    "imgSuperellipseN5": "/assets/6a15d782-90e3-4f59-92c5-db719599877b.png",
+    "imgLike": "/assets/like-24.svg"
   },
   "categories": {
     "imgCategoryAction": "/assets/525d5722-4db8-41d4-9d4a-09944251720b.svg",

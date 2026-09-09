@@ -33,6 +33,21 @@ for (const width of [320, 390, 768, 1200, 1600]) {
       return rank.top < cover.top - 0.5 || text.bottom > cover.bottom + 0.5;
     }).length);
     expect(overflowing).toBe(0);
+    // Every card credits its developer and shows the catalogue rating.
+    await expect(page.locator('.fact-developer dd a')).toHaveCount(20);
+    await expect(page.locator('.game-rating')).toHaveCount(20);
+    const firstDeveloper = page.locator('#game-1 .fact-developer dd a');
+    await expect(firstDeveloper).toHaveText('DUCKY LTD');
+    await expect(firstDeveloper).toHaveAttribute('href', 'https://playgama.com/search?query=DUCKY%20LTD');
+    expect(await page.locator('#game-1 .stars').evaluate(
+      stars => getComputedStyle(stars).getPropertyValue('--filled').trim())).toBe('94%');
+    // The 390 heading carries the corner rank and the likes pill; 1200 does not.
+    const corner = page.locator('#game-1 .icon-rank');
+    const likes = page.locator('#game-1 .game-likes');
+    await expect(corner).toBeVisible({ visible: width < 768 });
+    await expect(likes).toBeVisible({ visible: width < 768 });
+    if (width < 768) await expect(likes).toContainText('88k');
+
     await page.locator('.copyright').scrollIntoViewIfNeeded();
     for (const image of await page.locator('img:visible').all()) {
       if (!(await image.evaluate(image => image.complete && image.naturalWidth > 0))) {
@@ -83,20 +98,27 @@ for (const width of [390, 1200]) {
 
     const second = page.locator('#game-2');
     await second.scrollIntoViewIfNeeded();
-    const badge = second.locator('.game-position:visible');
-    await expect(badge).toHaveClass(/in-view/);
-    await expect(badge).toHaveCSS('background-color', 'rgb(243, 234, 255)');
-    await expect(badge).toHaveCSS('color', 'rgb(13, 13, 15)');
     await expect.poll(() => second.locator('video').evaluate(
       (video: HTMLVideoElement) => !video.paused && video.currentTime > 0)).toBe(true);
     expect(clips).toContain('mr-racer-car-racing.mp4');
 
-    // First place keeps its gold even while it is on screen.
-    const first = page.locator('#game-1');
-    await first.scrollIntoViewIfNeeded();
-    const gold = first.locator('.game-position:visible');
-    await expect(gold).toHaveClass(/in-view/);
-    await expect(gold).toHaveCSS('background-color', 'rgb(255, 200, 80)');
+    // The badge that lights up is the one on the cover; 390 shows the rank on the
+    // icon instead, and 9088:41714 keeps that one plain white.
+    if (width >= 768) {
+      const badge = second.locator('.game-position:visible');
+      await expect(badge).toHaveClass(/in-view/);
+      await expect(badge).toHaveCSS('background-color', 'rgb(243, 234, 255)');
+      await expect(badge).toHaveCSS('color', 'rgb(13, 13, 15)');
+
+      // First place keeps its gold even while it is on screen.
+      const first = page.locator('#game-1');
+      await first.scrollIntoViewIfNeeded();
+      const gold = first.locator('.game-position:visible');
+      await expect(gold).toHaveClass(/in-view/);
+      await expect(gold).toHaveCSS('background-color', 'rgb(255, 200, 80)');
+    } else {
+      await expect(second.locator('.icon-rank')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+    }
   });
 }
 

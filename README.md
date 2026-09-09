@@ -28,7 +28,7 @@ Both frames are the same collection page, so one responsive page implements them
 | | 1200 frame | 390 frame |
 | --- | --- | --- |
 | Ranking | two columns, ranks 1–10 and 11–20 running down each; 72 px covers, badge above the title | one column, 64 px covers, 28 px badge to the left, category under the title |
-| Game card | cover first with the rank overlaid on it, then the 56 px icon beside the title | a 56 px icon, the title, and the rank badge at the end of the row, then the cover |
+| Game card | cover first with the rank overlaid on it, then the 56 px icon beside the title | the rank sits on the icon's corner and a likes pill closes the row, then the cover |
 | Card facts | `PC, Android, iOS / September 2026` on one line, series below | `Platform:` / `Last Update:` / `Series:` on labelled rows |
 
 Cover art is masked with a **superellipse**, the shape Playgama uses throughout — `|2x-1|^5 + |2y-1|^5 = 1`, the same curve as the frames' `Superellipse (n=5)` layers. `src/squircle.ts` samples it into an SVG clip path in `objectBoundingBox` units, so one path stretches to any cover box; `border-radius` cannot draw this shape. Square catalogue icons are a different shape — a smoothed rounded corner, not a full superellipse — so they keep a radius and add `corner-shape: squircle` where the browser supports it.
@@ -52,12 +52,19 @@ is requested until you scroll — loading the page fetches no clips at all. The 
 `poster`, so a card that has not been reached, or whose clip fails, still shows the artwork.
 
 The rank badge lights up over the same signal: `#f3eaff` on `#0d0d0f` while its card is on screen.
-First place is the exception and keeps its gold in every state. Hovering a ranking row turns that row's
+First place is the exception and keeps its gold in every state. That badge only exists on the cover, so
+the highlight is a 1200 behaviour — the 390 heading carries the rank on the icon's corner, which
+`9088:41714` keeps plain white. Hovering a ranking row turns that row's
 badge white on black — that one does apply to first place too.
 
 ## Content
 
 Page content comes from the Playgama catalogue in `src/games.json` — 20 real games retrieved on 8 September 2026, with their titles, categories, platforms, update dates, related series, tag counts, and descriptions. Their artwork is committed under `public/games`, so rendering does not depend on expiring URLs.
+
+Each card credits its developer and shows the catalogue's rating. Playgama has no developer pages — the
+game page prints the name as plain text — so the credit links to a Playgama search for that developer,
+which does return their games. The stars are `ratingValue` out of 5 and the count beside them is
+`ratingCount`, the same number the likes pill abbreviates.
 
 All 20 games appear both in the ranking and as full cards below it. Each has a 256 px square icon and a 1200 px wide 16:9 cover in `public/games`, downscaled from the catalogue originals and saved as JPEG — the sources are 1920×1080 PNGs and would otherwise weigh 55 MB. Each also has its preview clip in `public/games/video` (14 MB for the twenty). The `sourceImage`, `sourceCover`, and `sourceVideo` fields in `games.json` keep the original URLs, so the media can be re-fetched. To swap in a different collection, replace `src/games.json` and the matching files in `public/games`.
 

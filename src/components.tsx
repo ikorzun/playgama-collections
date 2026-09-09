@@ -2,7 +2,7 @@ import { Fragment, useEffect, useRef, useState, type CSSProperties } from 'react
 import { SQUIRCLE_PATH } from './squircle';
 import {
   APP_URL, aboutDescription, assets, categories, categoryUrl, companyLinks, footerCategories,
-  games, languages, mobileAssets, sidebarLinks, socialLinks, type Game,
+  formatCount, games, languages, mobileAssets, sidebarLinks, socialLinks, type Game,
 } from './data';
 
 /** Reports whether the element is on screen, driving the badge state and the previews. */
@@ -137,12 +137,20 @@ export function GameCard({ game }: { game: Game & { cover: string } }) {
       <span className={'game-position on-cover' + state}>{badge}</span>
     </div>
     <div className="game-heading">
+      <span className="game-icon-slot">
+        <img className="game-icon" src={game.image} alt="" width="56" height="56" loading="lazy" />
+        <span className="icon-rank">{badge}</span>
+      </span>
       <span className={'game-position inline-badge' + state}>{badge}</span>
-      <img className="game-icon" src={game.image} alt="" width="56" height="56" loading="lazy" />
       <div className="game-heading-text">
         <h2 id={id + '-title'}>{game.title}</h2>
         <p>{game.category}</p>
       </div>
+      <span className="game-likes">
+        <Icon className="like-icon" src={assets.card.imgLike} />
+        <span>{formatCount(game.ratingCount)}</span>
+        <span className="sr-only"> likes</span>
+      </span>
     </div>
     <a className="play-button" href={game.href}>Play now<span className="sr-only"> — {game.title}</span></a>
     <div className="game-details">
@@ -151,7 +159,14 @@ export function GameCard({ game }: { game: Game & { cover: string } }) {
         <div className="fact-update"><dt>Last Update:</dt><dd>{game.updatedAt}</dd></div>
         <div className="fact-series"><dt>Series:</dt><dd>{game.relatedLinks.map((link, index) =>
           <Fragment key={link.href}>{index > 0 && ', '}<a href={link.href}>{link.label}</a></Fragment>)}</dd></div>
+        <div className="fact-developer"><dt>Developer:</dt><dd><a href={game.developerUrl}>{game.developer}</a></dd></div>
       </dl>
+      <p className="game-rating">
+        <span className="stars" style={{ '--filled': (game.rating / 5) * 100 + '%' } as CSSProperties} aria-hidden="true">★★★★★</span>
+        <strong>{game.rating.toFixed(1)}</strong>
+        <span className="rating-count">{formatCount(game.ratingCount)} ratings</span>
+        <span className="sr-only">{game.rating.toFixed(1)} out of 5</span>
+      </p>
       <ul className="game-tags" aria-label="Game tags">{game.tags.map(tag =>
         <li key={tag.href}><a href={tag.href}>{tag.label} <span>{tag.count}</span></a></li>)}</ul>
       <p className="game-description">{game.description}</p>

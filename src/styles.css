@@ -113,7 +113,18 @@ h1 { font-size: 48px; line-height: 1; font-weight: 590; text-align: center; lett
 .game-position.in-view:not(.first) { background: #f3eaff; color: #0d0d0f; }
 .game-position.on-cover { position: absolute; top: 4px; right: 0; width: 44px; height: 44px; }
 .game-position.inline-badge { display: none; }
-.game-icon { flex: none; width: 56px; height: 56px; object-fit: cover; border-radius: 16px; }
+.game-icon-slot { position: relative; flex: none; display: flex; }
+.game-icon { flex: none; display: block; width: 56px; height: 56px; object-fit: cover; border-radius: 16px; }
+/* 9088:41714 hangs the rank off the icon's corner; 1200 keeps it on the cover. */
+.icon-rank { display: none; position: absolute; top: -5px; right: -5px; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: #fff; color: #000; font-size: 11px; font-weight: 510; line-height: 1.1; }
+.game-likes { display: none; align-items: center; justify-content: center; gap: 4px; flex: none; height: 48px; padding: 0 10px 0 8px; border: 1px solid #ffffff14; border-radius: 40px; background: #ffffff14; font-size: 14px; font-weight: 510; line-height: 1; }
+.like-icon { width: 24px; height: 24px; }
+/* Stars fill proportionally: a gold copy clipped over the dim row beneath it. */
+.game-rating { display: flex; align-items: center; gap: 8px; font-size: 14px; line-height: 1.2; }
+.stars { position: relative; color: #ffffff2e; letter-spacing: 2px; }
+.stars::before { content: '\2605\2605\2605\2605\2605'; position: absolute; inset: 0; width: var(--filled); overflow: hidden; color: var(--gold); white-space: nowrap; }
+.game-rating strong { font-weight: 510; }
+.rating-count { color: var(--muted); }
 .game-heading-text { flex: 1; min-width: 0; }
 .game-heading h2, .game-heading p { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .game-heading h2 { font-size: 21px; font-weight: 510; line-height: 1.1; }
@@ -127,7 +138,7 @@ h1 { font-size: 48px; line-height: 1; font-weight: 590; text-align: center; lett
 .game-facts dd { color: #fff; }
 .fact-platform::after { content: ' / '; }
 .game-facts > .fact-series { display: block; margin-top: 6px; }
-.fact-series a { color: var(--purple-light); }
+.game-facts dd a { color: var(--purple-light); }
 .game-tags { display: flex; flex-wrap: wrap; gap: 4px; }
 .game-tags a { display: inline-flex; align-items: center; gap: 3px; height: 24px; padding: 0 12px; border-radius: 100px; background: var(--carbon-400); font-size: 12px; line-height: 1; font-weight: 510; color: var(--purple-light); }
 .game-tags a > span { color: #ffffff66; }
@@ -239,10 +250,11 @@ body:has(dialog[open]) { overflow: hidden; }
   .featured-games { width: 100%; gap: 24px; }
   .game-card { gap: 16px; padding: 16px 0; }
   /* 390 puts the heading above the cover: icon, title, then the rank at the end. */
-  .game-heading { order: 0; gap: 12px; }
+  .game-heading { order: 0; gap: 10px; }
+  .game-likes { display: flex; }
+  .icon-rank { display: grid; }
   .game-heading, .play-button, .game-details { margin-inline: 0; }
-  .game-position.on-cover { display: none; }
-  .game-position.inline-badge { display: grid; order: 1; width: 48px; height: 48px; }
+  .game-position.on-cover, .game-position.inline-badge { display: none; }
   .game-heading p { margin-top: 6px; }
   .game-facts { display: flex; flex-direction: column; gap: 6px; line-height: 1.2; }
   .game-facts dt { display: inline; margin-right: 4px; color: #ffffff99; }

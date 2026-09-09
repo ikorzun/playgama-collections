@@ -57,7 +57,17 @@ export type Game = {
   description: string;
   /** Catalogue preview clip, played while the card is on screen. */
   video: string | null;
+  developer: string;
+  /** The catalogue has no developer pages, so this searches Playgama for them. */
+  developerUrl: string;
+  rating: number;
+  ratingCount: number;
 };
+
+/** 88271 -> "88k", the way the catalogue writes its counts. */
+export function formatCount(count: number) {
+  return count >= 1000 ? Math.round(count / 1000) + 'k' : String(count);
+}
 
 /** The ranked collection: real Playgama titles, artwork, tags, and copy. */
 export const games: Game[] = catalogue as Game[];
