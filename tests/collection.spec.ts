@@ -45,8 +45,11 @@ for (const width of [320, 390, 768, 1200, 1600]) {
     const corner = page.locator('#game-1 .icon-rank');
     const likes = page.locator('#game-1 .game-likes');
     await expect(corner).toBeVisible({ visible: width < 768 });
-    await expect(likes).toBeVisible({ visible: width < 768 });
-    if (width < 768) await expect(likes).toContainText('88k');
+    await expect(likes).toBeVisible();
+    await expect(likes).toContainText('88k');
+    // 1200 fills the row with the darker pill; 390 uses the fixed 48 px one.
+    await expect(likes).toHaveCSS('background-color', width < 768 ? 'rgba(255, 255, 255, 0.08)' : 'rgb(29, 29, 33)');
+    await expect(likes).toHaveCSS('font-size', width < 768 ? '14px' : '16px');
 
     await page.locator('.copyright').scrollIntoViewIfNeeded();
     for (const image of await page.locator('img:visible').all()) {
