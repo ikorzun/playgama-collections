@@ -94,7 +94,7 @@ export function GameRanking() {
     {games.map(game => <li key={game.rank} value={game.rank}><a className="ranking-link" href={game.href} aria-label={'Play ' + game.title + ', ranked ' + game.rank}>
       <img className="ranking-cover" src={game.image} alt="" width="80" height="80" loading="lazy" />
       <span className="ranking-body">
-        <span className={'rank' + (game.rank === 1 ? ' first' : '')}>{game.rank}</span>
+        <span className="rank">{game.rank}</span>
         <span className="ranking-text">
           <span className="ranking-title">{game.title}</span>
           <span className="ranking-category">{game.category}</span>

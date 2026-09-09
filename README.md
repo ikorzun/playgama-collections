@@ -37,7 +37,7 @@ Hairline dividers bracket the ranking, as in the 1200 frame, and one more sits a
 
 Two more deliberate departures from the frames: the desktop introduction is set at 18 px where node `9094:45174` still reads 16 px, and each ranking row centres its badge and title against the cover rather than hanging them from its top edge.
 
-Rank 1 carries the golden badge in both frames, at the same size as the others. The mobile reference's iOS status bar and Safari controls are browser chrome and are intentionally excluded from the webpage.
+Every rank in the list carries the same outlined badge; the gold is reserved for first place on the game card. The mobile reference's iOS status bar and Safari controls are browser chrome and are intentionally excluded from the webpage.
 
 The ranking is capped at 800 px and runs two columns down to 768 px, then one column below that. Its rows are exactly as tall as the 80 px cover: the badge and the title are centred against it and never extend past its top or bottom edge, which is what caps the title at two 20 px lines. The frames' placeholder "Game name" never needed a second line; real catalogue titles occasionally do, and a browser check asserts nothing overflows the cover.
 
