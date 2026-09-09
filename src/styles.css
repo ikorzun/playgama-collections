@@ -118,7 +118,8 @@ h1 { font-size: 48px; line-height: 1; font-weight: 590; text-align: center; lett
 /* 9088:41714 hangs the rank off the icon's corner; 1200 keeps it on the cover. */
 .icon-rank { display: none; position: absolute; top: -5px; right: -5px; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: #fff; color: #000; font-size: 11px; font-weight: 510; line-height: 1.1; }
 .game-likes { display: flex; align-items: center; justify-content: center; align-self: stretch; gap: 4px; flex: none; padding: 0 18px 0 16px; border: 1px solid #ffffff14; border-radius: 40px; background: var(--carbon-300); font-size: 16px; font-weight: 510; line-height: 1; }
-.like-icon { width: 24px; height: 24px; }
+/* system/like-24 is a 24 px frame around a 20 px glyph; this renders the glyph. */
+.like-icon { width: 20px; height: 20px; }
 /* Stars fill proportionally: a gold copy clipped over the dim row beneath it. */
 .game-rating { display: flex; align-items: center; gap: 8px; font-size: 14px; line-height: 1.2; }
 .stars { position: relative; color: #ffffff2e; letter-spacing: 2px; }
