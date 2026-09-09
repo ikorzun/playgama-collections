@@ -8,7 +8,7 @@
     "imgLogo": "/assets/ec2fec67-f4ca-4ea9-bfd1-14f35dd2a576.svg",
     "imgPercentage100DarkModeOn": "/assets/eff82ec2-4a24-488e-96cc-006584b8315f.svg",
     "imgConnectionWiFiDarkModeOn": "/assets/44763498-2ee1-4fa3-b4f8-dec6f2e91509.svg",
-    "imgSuperellipseN5": "/assets/cfff7788-e381-46ba-9491-59e4cad5d50e.png",
+    "imgSuperellipseN5": "/assets/hero-september-2026-mobile.jpg",
     "imgSuperellipseN6": "/assets/381845d2-bad3-4c2c-98b8-3a0869d36efe.png",
     "imgFennecCircle": "/assets/9412b063-bb31-4fed-b3ad-8dd1237e3631.svg",
     "imgBadges": "/assets/9746595c-182a-4b55-96b2-659d590a21dd.svg",
@@ -70,7 +70,7 @@
     "imgCategoryIo": "/assets/e6089192-400c-4665-b402-b97177a83099.svg"
   },
   "hero": {
-    "imgSuperellipseN5": "/assets/1492d4e3-2b06-493e-a596-07ed734a1f3d.png"
+    "imgSuperellipseN5": "/assets/hero-september-2026.jpg"
   },
   "snippet": {
     "imgCover11": "/assets/40bb8685-2d04-46f8-8b81-1f0a24f1ac30.png"

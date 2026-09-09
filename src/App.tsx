@@ -10,7 +10,7 @@ export function App() {
     <div className="page-shell">
       <Header />
       <main id="main-content" className="collection">
-        <picture className="hero"><source media="(max-width: 767px)" srcSet={mobileAssets.imgSuperellipseN5} /><img src={assets.hero.imgSuperellipseN5} alt="Best 20 browser games, September 2026 — a colorful collection of adventure, puzzle, racing, and space games" width="600" height="338" fetchPriority="high" /></picture>
+        <picture className="hero"><source media="(max-width: 767px)" srcSet={mobileAssets.imgSuperellipseN5} /><img src={assets.hero.imgSuperellipseN5} alt="A collage of the collection: a racing supercar, blocky sandbox worlds, a puzzle maze, a pirate ship, and a shooter" width="1600" height="900" fetchPriority="high" /></picture>
         <h1>Best 20 Browser Games<br />in September 2026</h1>
         <p className="introduction">{introduction}</p>
         <GameRanking />

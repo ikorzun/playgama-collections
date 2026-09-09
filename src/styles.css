@@ -85,7 +85,7 @@ ol, ul { padding: 0; list-style: none; }
 
 .collection { display: flex; flex-direction: column; align-items: stretch; gap: var(--section-gap); max-width: var(--content-width); margin: 12px auto 0; padding-top: 32px; }
 .hero { display: block; width: 100%; max-width: 800px; align-self: center; }
-.hero img { width: 100%; height: auto; aspect-ratio: 600 / 338; }
+.hero img { width: 100%; height: auto; aspect-ratio: 600 / 338; object-fit: cover; }
 h1 { font-size: 48px; line-height: 1; font-weight: 590; text-align: center; letter-spacing: 0; }
 .introduction { align-self: center; max-width: 600px; text-align: center; font-size: 18px; line-height: 1.2; color: rgba(255, 255, 255, .8); }
 .game-ranking { display: grid; grid-auto-flow: column; grid-template-rows: repeat(10, auto); grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 12px; row-gap: 20px; padding-block: 32px; border-block: 1px solid #ffffff14; align-self: center; width: 100%; max-width: 800px; }
